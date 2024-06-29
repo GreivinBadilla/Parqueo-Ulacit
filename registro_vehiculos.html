@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Vehículo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="ver_vehiculos.js"></script>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Vehículo</h1>
+        <form id="registerVehicleForm">
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" name="marca" required>
+
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" required>
+
+            <label for="placa">Número de Placa:</label>
+            <input type="text" id="placa" name="placa" required pattern="^[a-zA-Z0-9]+$" title="Solo letras y números">
+
+            <label for="tipo">Tipo:</label>
+            <input type="text" id="tipo" name="tipo" required>
+
+            <label for="dueño">Dueño:</label>
+            <input type="text" id="dueño" name="dueño" required pattern="^[a-zA-Z ]+$" title="Solo letras">
+
+            <label for="ley7600">¿Utiliza espacio Ley 7600?</label>
+            <input type="checkbox" id="ley7600" name="ley7600">
+
+            <button type="button" onclick="obtener_datos_vehiculo()">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>

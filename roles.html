@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Roles</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Selecciona tu Rol</h2>
+        <button onclick="location.href='estudiantes.html'">Estudiante</button>
+        <button onclick="location.href='administracion.html'">Administración</button>
+        <button onclick="seleccionarRol('Guarda')">Guarda</button>
+        <button onclick="mostrarInfo()">ℹ️</button>
+        <div id="info" style="display: none;">
+            <p>Estás en la sección de roles:</p>
+            <p>Paso uno: Escoge tu rol según tu consumo de la app.</p>
+            <p>Paso dos: Disfruta de la aplicación.</p>
+        </div>
+    </div>
+
+    <script>
+        function seleccionarRol(rol) {
+            
+            console.log(`Rol seleccionado: ${rol}`);
+      
+        }
+
+        function mostrarInfo() {
+            var infoDiv = document.getElementById('info');
+            if (infoDiv.style.display === 'none') {
+                infoDiv.style.display = 'block';
+            } else {
+                infoDiv.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tus Vehículos Registrados</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+
+    <style>
+        
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tus Vehículos Registrados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Marca</th>
+                <th>Color</th>
+                <th>Placa</th>
+                <th>Tipo</th>
+                <th>Dueño</th>
+                <th>Ley 7600</th>
+            </tr>
+        </thead>
+        <tbody id="vehicleTableBody">
+            
+        </tbody>
+    </table>
+
+    <script>
+        
+        function cargarVehiculos() {
+            const vehicles = obtener_vehiculos_guardados(); 
+
+            const tableBody = document.getElementById('vehicleTableBody');
+            tableBody.innerHTML = ''; 
+
+            vehicles.forEach(vehicle => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${vehicle.marca}</td>
+                    <td>${vehicle.color}</td>
+                    <td>${vehicle.placa}</td>
+                    <td>${vehicle.tipo}</td>
+                    <td>${vehicle.dueño}</td>
+                    <td>${vehicle.utilizaEspacioLey7600 ? 'Sí' : 'No'}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        
+        function obtener_vehiculos_guardados() {
+            const vehiculos = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith("vehiculo_")) {
+                    const vehiculo = JSON.parse(localStorage.getItem(key));
+                    vehiculos.push(vehiculo);
+                }
+            }
+            return vehiculos;
+        }
+
+        
+        window.onload = function() {
+            cargarVehiculos();
+        };
+    </script>
+</body>
+</html>
